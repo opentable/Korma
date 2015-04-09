@@ -2,7 +2,7 @@
 
 Tasty SQL for Clojure.
 
-## TravisCI Status
+## TravisCI Status (for Korma proper)
 
 [![Build Status](https://travis-ci.org/korma/Korma.png)](https://travis-ci.org/korma/Korma)
 
@@ -10,9 +10,7 @@ Tasty SQL for Clojure.
 
 Simply add Korma as a dependency to your lein project:
 
-```clojure
-[korma "0.4.0"]
-```
+[![Clojars Project](http://clojars.org/opentable/korma/latest-version.svg)](http://clojars.org/opentable/korma)
 
 Note: korma depends on version 0.3.5 of jdbc, so if you have another dependency that requires a different version (like the migrations library [lobos](https://github.com/budu/lobos)), be sure to specify:
 
