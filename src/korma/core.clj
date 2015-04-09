@@ -63,6 +63,16 @@
                    :where []
                    :post-queries [first]}))
 
+(defn update-returning-rows*
+  "Create an empty update query. Ent can either be an entity defined
+  by defentity or a string of the table name. This doesn't work for
+  all databases, but for PSQL it does the sensible thing."
+  [ent]
+  (make-query ent {:type :update
+                   :fields {}
+                   :where []
+                   :results :keys}))
+
 (defn delete*
   "Create an empty delete query. Ent can either be an entity defined by defentity,
   or a string of the table name"
@@ -132,6 +142,13 @@
         (where {:id 4}))"
   [ent & body]
   (make-query-then-exec #'update* body ent))
+
+(defmacro update-returning-rows
+  "Same as update, but it returns the rows instead of the
+  number (reviving the behavior that update used to have without
+  replacing it)."
+  [ent & body]
+  (make-query-then-exec #'update-returning-rows* body ent))
 
 (defmacro delete
   "Creates a delete query, applies any modifying functions in the body and then
