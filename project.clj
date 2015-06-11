@@ -1,4 +1,4 @@
-(defproject opentable/korma "0.4.1"
+(defproject opentable/korma "0.4.2"
   :description "Tasty SQL for Clojure"
   :url "http://github.com/opentable/Korma"
   :mailing-list {:name "Korma Google Group"
