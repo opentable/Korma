@@ -69,6 +69,7 @@
   all databases, but for PSQL it does the sensible thing."
   [ent]
   (make-query ent {:type :update
+                   :transform? true
                    :fields {}
                    :where []
                    :results :keys}))
@@ -470,7 +471,8 @@
 
 (defn- apply-transforms
   [query results]
-  (if (#{:delete :update} (:type query))
+  (if (and (#{:delete :update} (:type query))
+           (not (contains? query :transform?)))
     results
     (if-let [trans (-> query :ent :transforms seq)]
       (let [trans-fn (apply comp trans)]
